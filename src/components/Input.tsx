@@ -13,6 +13,12 @@ export function Input({ ...rest }: IInputProps) {
             mb={4}
             placeholderTextColor="gray.300"
 
+            _focus={{
+                bg: "gray.700",
+                borderWidth: 1,
+                borderColor: "grenn.500"
+            }}
+
             {...rest}
         />
     );
