@@ -22,7 +22,7 @@ export const THEME = extendTheme(
             }
         },
         fonts: {
-            heading: 'Roboto_700Bold',
+            heading: 'Roboto_600Bold',
             body: 'Roboto_400Regular',
         },
         fontSizes: {
