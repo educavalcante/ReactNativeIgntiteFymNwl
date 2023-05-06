@@ -14,10 +14,10 @@ export function HomeHeader() {
            />
 
             <VStack flex={1}>
-                <Text color="gray.100" fontSize="md">
-                    Ola, 
+                <Text color="gray.100" fontSize="xs">
+                    Olá, 
                 </Text>
-                <Heading color="gray.100" fontSize="md">
+                <Heading color="gray.100" fontSize="sm">
                     CPC Brasil 
                 </Heading>
             </VStack>
