@@ -1,32 +1,50 @@
-import {  Linking } from 'react-native';
-import { TouchableOpacity, TouchableOpacityProps} from "react-native";
-import { Center, Text, Heading,VStack, HStack, View } from 'native-base';
+import { useState } from 'react';
+import { Heading, SectionList, VStack, Text } from 'native-base';
 
-type Props = TouchableOpacityProps & {
+import { ScreenHeader } from '@components/ScreenHeader';
+import { HistoryCard } from '@components/HistoryCard';
 
-};
-export function History({...rest}: Props) {
-    const handleLinkPress = () => {
-        // Abra o link usando a API de Linking
-        Linking.openURL('https://www.cpcbrasil.com');
-      };
+export function History() {
+    const [exercises, setExercises] = useState([
+        {
+            title: "25.5.22",
+            data: ["Remada Unilateral", "Puxada Cruzada"]
+        },
+        {
+            title: "26.5.22",
+            data: ["Puxada frontal"]
+        },
+    ]);
+
     return (
-        <View>
-        <TouchableOpacity  onPress={handleLinkPress}  {...rest}>
-        <HStack bg="gray.500" alignItems="center" p={10} pr={3} rounded="md" mb={3}>
+        <VStack flex={1}>
+            <ScreenHeader title="Histórico de Exercícios" />
+          
+            <SectionList  
+                sections={exercises}
+                keyExtractor={item => item}
+                renderItem={({item}) =>(
+                    <HistoryCard />
+                )}
+                renderSectionHeader={({section}) => (
+                    <Heading color="gray.200" fontSize="sm" mt={10} mb={3}>
+                        {section.title}
+                    </Heading>
+                )}
+                px={8}
+                contentContainerStyle={exercises.length === 0 && { flex: 1, justifyContent:'center'}}
+                ListEmptyComponent={() => (
+                    <Text>
+                        Não há Exercícios registrados ainda. {'\n'}
+                        Vamos nos exercitar...
+                    </Text>
+                )}
+                showsVerticalScrollIndicator={false}
+            />
 
-            <VStack flex={1}>
-                <Heading fontSize="xs" color="white">
-                    Abrir Página
-                </Heading>
-                <Text fontSize="mm" color="gray.200" mt={0} numberOfLines={2}>
-                https://www.cpcbrasil.com/
-                </Text>
-            </VStack>
+           
 
-            
-        </HStack>
-    </TouchableOpacity>
-    </View>
-    )
+    
+        </VStack>
+    );
 }
