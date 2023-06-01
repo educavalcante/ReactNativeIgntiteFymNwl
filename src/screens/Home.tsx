@@ -17,7 +17,6 @@ export function Home() {
     function handleExerciseDetail() {
         navigation.navigate('exercise')
     }
-
     return (
         <VStack flex={1}>
             <HomeHeader />
@@ -36,6 +35,7 @@ export function Home() {
                 _contentContainerStyle={{ px: 6 }}   
                 my={10}
                 maxH={10}
+                minH={10}
             />
             <VStack flex={1} px={8}>
                 <HStack justifyContent="space-between" mb={5}>
